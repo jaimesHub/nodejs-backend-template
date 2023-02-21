@@ -13,7 +13,7 @@ class Database {
   connect() {
     // const connectString = `mongodb://localhost:27017/shopDEV`;
     const hostname = "jaimes";
-    const password = encodeURIComponent("Fsoft@123123");
+    const password = encodeURIComponent("....");
     const dbname = "shopDEV";
     const connectString = `mongodb+srv://${hostname}:${password}@cluster0.wh22rm1.mongodb.net/${dbname}?retryWrites=true&w=majority`;
 
