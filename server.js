@@ -1,11 +1,11 @@
-const { notify } = require("./src/app");
-const app = require("./src/app");
+const { notify } = require("./src/app")
+const app = require("./src/app")
 
-const PORT = 3055;
+const PORT = process.env.PORT || 3056
 // khoi tao server
 const server = app.listen(PORT, () => {
-  console.log(`WSV eCommerce starts with port ${PORT}`);
-});
+  console.log(`WSV eCommerce starts with port ${PORT}`)
+})
 
 // process phương thức quy trình trong nodejs
 // process.on("SIGINT", () => {
