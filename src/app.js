@@ -5,12 +5,18 @@ const { default: helmet } = require("helmet")
 const morgan = require("morgan")
 const app = express()
 
-// console.log(`Process::`, process.env)
-
 // init middlewares
 app.use(morgan("dev"))
 app.use(helmet())
 app.use(compression())
+// no need express.bodyParser in ver 4
+// app.use(express.bodyParser())
+app.use(express.json())
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+)
 
 // init db
 require("./dbs/init.mongodb")
@@ -18,14 +24,7 @@ require("./dbs/init.mongodb")
 // checkOverload();
 
 // init routes
-app.get("/", (req, res, next) => {
-  // const strCompress = "Hello Factipjs";
-
-  return res.status(200).json({
-    message: "Welcome Fantipjs!",
-    // metadata: strCompress.repeat(100000),
-  })
-})
+app.use("/", require("./routes"))
 
 // handle errors
 module.exports = app
